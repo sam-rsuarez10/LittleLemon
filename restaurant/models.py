@@ -11,3 +11,11 @@ class Menu(models.Model):
     title = models.CharField(max_length=255)
     price = models.DecimalField(max_digits=2, decimal_places=1)
     inventory = models.IntegerField()
+
+class MenuItem(models.Model):
+    title = models.CharField(max_length=255, db_index=True)
+    price = models.DecimalField(max_digits=6, decimal_places=2, db_index=True)
+    featured = models.BooleanField(db_index=True)
+
+    def __str__(self):
+        return self.title
